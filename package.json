@@ -1,0 +1,26 @@
+{
+  "name": "jsask",
+  "version": "1.0.0",
+  "description": "A library for querying MySQL databases from Node.JS. Unlike a typical ORM, JsAsk doesn't try to take charge of your data -- it just gives you a user-friendly way to write SQL-like queries in JavaScript. Ideal for use with existing databases",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luke-Robinett/JsAsk.git"
+  },
+  "author": "Luke Robinett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Luke-Robinett/JsAsk/issues"
+  },
+  "homepage": "https://github.com/Luke-Robinett/JsAsk#readme",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
