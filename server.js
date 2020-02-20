@@ -1,20 +1,30 @@
-const JsAsk = require("./lib/jsask");
+const { JsAsk, compOp, logOp } = require("./lib/jsask");
 
 const jsAsk = new JsAsk();
-jsAsk.insert({
- table: "users",
- fields: ["username", "email", "password"]
-})
-jsAsk.selectValues([
- { value: "Screamin' Meemee", alias: "username" },
- { value: "screamin@meemee.com", alias: "email" },
- { value: "pass1234", alias: "password" }
+
+jsAsk.select([
+    { field: "username", alias: "User Name" },
+    { field: "email", alias: "Email Address" },
+    "password"
 ])
-// .from({ name: "users", alias: "from_table"})
-.go((err, result) => {
- if (err) {
-  console.error(err);
-  return;
- }
- console.log(JSON.stringify(result));
-});
+    .from({ name: "users", alias: "User Table" })
+    .where([
+        {
+            field: "username",
+            compOp: compOp.equal,
+            value: "Joe"
+        },
+        {
+            logOp: logOp.and,
+            field: "email",
+            compOp: compOp.notEqual,
+            value: "ok@addr"
+        }
+    ])
+    .go((err, result) => {
+        if (err) {
+            console.log(err.message);
+            return;
+        }
+        console.log(JSON.stringify(result));
+    });
